@@ -1,0 +1,58 @@
+@import "./tokens.css";
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+a { color: var(--primary); text-decoration: none; }
+h1 { font-size: 20px; margin: 0 0 4px; }
+h2 { font-size: 16px; margin: 0 0 8px; }
+p { margin: 0 0 8px; }
+.muted { color: var(--muted); }
+.mono { font-family: var(--mono); }
+
+.layout { display: grid; grid-template-columns: 240px 1fr; grid-template-rows: auto 1fr; min-height: 100vh; }
+.topbar { grid-column: 1 / -1; display: flex; align-items: center; gap: 12px; padding: 8px 16px; background: var(--surface); border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+.topbar .brand { font-weight: 700; margin-right: auto; }
+.sidebar { background: var(--surface); border-right: 1px solid var(--border); padding: 12px; overflow-y: auto; }
+.sidebar h3 { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin: 14px 0 6px; }
+.sidebar a, .sidebar button.nav { display: flex; justify-content: space-between; width: 100%; text-align: left; padding: 6px 8px; border-radius: 6px; color: var(--text); background: none; border: 0; cursor: pointer; font: inherit; }
+.sidebar a:hover, .sidebar button.nav:hover { background: var(--bg); }
+.sidebar a.active, .sidebar button.nav.active { background: var(--bg); font-weight: 600; box-shadow: inset 3px 0 0 var(--primary); }
+.sidebar .locked { opacity: .45; }
+.main { padding: 16px; min-width: 0; }
+@media (max-width: 800px) { .layout { grid-template-columns: 1fr; } .sidebar { border-right: 0; border-bottom: 1px solid var(--border); } }
+
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px; margin-bottom: var(--gap); }
+.card.flat { padding: 0; }
+.row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.grid { display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+.stack > * + * { margin-top: 8px; }
+
+.btn { background: var(--primary); color: var(--primary-ink); border: 0; border-radius: 6px; padding: 6px 12px; font: inherit; cursor: pointer; }
+.btn:disabled { opacity: .5; cursor: wait; }
+.btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+.btn.danger { background: var(--err); }
+.btn.sm { padding: 3px 8px; font-size: 12px; }
+
+.field { display: flex; flex-direction: column; gap: 2px; }
+.field label { font-size: 12px; color: var(--muted); }
+input, select, textarea { font: inherit; color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 5px 8px; width: 100%; }
+textarea { font-family: var(--mono); font-size: 12px; min-height: 90px; resize: vertical; }
+
+.badge { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 11px; font-weight: 600; color: #fff; background: var(--muted); }
+.badge.publico { background: var(--c-publico); } .badge.usuario { background: var(--c-usuario); }
+.badge.organizador { background: var(--c-organizador); } .badge.administrador, .badge.admin { background: var(--c-admin); }
+.method { font-family: var(--mono); font-size: 11px; font-weight: 700; min-width: 54px; text-align: center; padding: 2px 6px; border-radius: 4px; color: #fff; }
+.method.GET { background: var(--m-get); } .method.POST { background: var(--m-post); }
+.method.PUT { background: var(--m-put); } .method.DELETE { background: var(--m-delete); }
+.status.ok { color: var(--ok); } .status.bad { color: var(--err); }
+
+.ep summary { display: flex; gap: 8px; align-items: center; padding: 10px 12px; cursor: pointer; list-style: none; }
+.ep summary::-webkit-details-marker { display: none; }
+.ep summary .path { font-family: var(--mono); font-size: 12px; }
+.ep summary .sum { color: var(--muted); font-size: 12px; margin-left: auto; text-align: right; }
+.ep .body { padding: 0 12px 12px; border-top: 1px solid var(--border); padding-top: 12px; }
+pre.json { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 8px; overflow: auto; max-height: 360px; font-size: 12px; margin: 6px 0 0; white-space: pre-wrap; word-break: break-word; }
+.err { color: var(--err); }
+.note { background: var(--bg); border: 1px dashed var(--border); border-radius: 6px; padding: 8px 10px; color: var(--muted); font-size: 13px; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+td, th { text-align: left; padding: 4px 6px; border-bottom: 1px solid var(--border); }
+.auth-wrap { max-width: 420px; margin: 8vh auto; padding: 0 16px; }
